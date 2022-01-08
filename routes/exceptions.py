@@ -1,5 +1,10 @@
 from fastapi import HTTPException, status
 
 
-NOT_FOUND_MSG: str = "Resource not found."
-NOT_FOUND = HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=NOT_FOUND_MSG)
+CHECK_INPUT_MSG: str = "Please check the data you sent."
+CHECK_INPUT_EXC = HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=CHECK_INPUT_MSG)
+
+
+EMPTY_ARRAY_MSG: str = "Please enter the array elements."
+EMPTY_ARRAY_EXC = HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=EMPTY_ARRAY_MSG)
+

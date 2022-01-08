@@ -7,7 +7,7 @@ from starlette.requests import Request
 from core.config import API_PREFIX
 from core.constants import FLATTEN_ARRAY_URL
 from core.utils import flatten_array
-from routes.exceptions import NOT_FOUND
+from routes.exceptions import CHECK_INPUT_EXC, EMPTY_ARRAY_EXC
 
 
 router = APIRouter(prefix=API_PREFIX)
@@ -15,9 +15,13 @@ router = APIRouter(prefix=API_PREFIX)
 
 @router.post(FLATTEN_ARRAY_URL)
 async def flatten_array_service(data: Request) -> JSONResponse:
-    req_body = await data.json()
-    if req_body.get("input"):
-        result: List[int] = await flatten_array(req_body.get("input"))
-        return JSONResponse(status_code=status.HTTP_200_OK, content={"output": result})
-    else:
-        raise NOT_FOUND
+    try:
+        req_body = await data.json()
+        inputs = req_body.get("input")
+        if inputs:
+            result: List[int] = await flatten_array(inputs)
+            return JSONResponse(status_code=status.HTTP_200_OK, content={"output": result})
+        else:
+            raise CHECK_INPUT_EXC
+    except Exception:
+        raise CHECK_INPUT_EXC
