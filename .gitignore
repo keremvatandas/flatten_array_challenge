@@ -130,3 +130,6 @@ dmypy.json
 
 # python config ini
 config.ini
+
+# for macos DS_STORE
+.DS_Store

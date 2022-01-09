@@ -1,36 +1,20 @@
 ### Note: Used python 3.9.9 in this project
 
-# Install Python packages
+- You can use function.zip file on aws lambda
+
+
+### Aws Deploy - API URL
+
+https://eibb89rszb.execute-api.eu-central-1.amazonaws.com/dev/
+
+**Api Path:** /api/array
+
+### CURL Example
 
 ```bash
 
-pip3 install -r requirements.txt
-
-# you can install requirements-dev.txt if you want to use debugger and some dev packages
-pip3 install -r requirements-dev.txt
-
-```
-
-# Settings
-
-- You can change some configuration about project like project name, version etc.
-
-```
-cp config-sample.ini config.ini
-
-# Example
-[FASTAPI]
-PROJECT_NAME=Flatten Array Challenge
-API_PREFIX=/api
-API_VERSION=v.0.1
-DEBUG=1
-```
-
-
-# How to run the project?
-
-``` bash
-
-uvicorn main:app --reload
+curl -X POST https://eibb89rszb.execute-api.eu-central-1.amazonaws.com/dev/api/array
+   -H 'Content-Type: application/json'
+   -d '{"input": [1, [2,3, [4]], [5], 6, [7, [8]]]}'
 
 ```
