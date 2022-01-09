@@ -1,5 +1,9 @@
 ### Note: Used python 3.9.9 in this project
 
+
+### Change branch for Aws lambda version
+- AWS LAMBDA: https://github.com/keremvatandas/flatten_array_challenge/tree/aws-lambda
+
 # Install Python packages
 
 ```bash
